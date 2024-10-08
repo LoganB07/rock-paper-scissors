@@ -42,13 +42,8 @@ function decisionMaker() {
     return choice;
 }
 
-
-//Start of Game
-let playerScore = 0;
-let computerScore = 0;
-console.log("Welcome to the game of Rock Paper Scissors!\n\n");
-
-//Prompts user for input
+function playRound(){
+    //Prompts user for input
 let playerChoice = input();
 console.log(playerChoice);
 
@@ -86,5 +81,33 @@ else {
     playerScore++;
     computerScore++;
 }
+}
 
-console.log(playerScore + " " + computerScore);
+function playGame(){
+    for (let i = 0; i < 5; ++i){
+        playRound();
+    }
+}
+
+function announceWinner(playerScore, compScore) {
+    console.log("You scored: ${playerScore}  Computer scored: ${compScore}");
+    if (playerScore > compScore) {
+        console.log("Wow you won the game! Good job!");
+    }
+    else if (playerScore < compScore) {
+        console.log("Sorry you lost the game. Compuer wins.");
+    }
+    else {
+        console.log("Wow you guys are evenly matched! It's a tie!");
+    }
+}
+
+
+//Start of Game
+let playerScore = 0;
+let computerScore = 0;
+console.log("Welcome to the game of Rock Paper Scissors!\n\n");
+
+playGame();
+announceWinner(playerScore, computerScore);
+
