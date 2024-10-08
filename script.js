@@ -1,8 +1,22 @@
 // No parameters needed
-// Returns input from the user in lowercase
+// Returns input from the user in lowercase with validation
 function input() {
-    let playerChoice = prompt("Rock, Paper, or Scissors: ");
-    return playerChoice.toLowerCase();
+    let playerChoice;
+    let valid = false;
+    const validChoices = ["rock", "paper", "scissors"];
+    while (!valid){
+        playerChoice = prompt("Rock, Paper, or Scissors: ");
+        playerChoice = playerChoice.toLowerCase();
+        for (let i = 0; i < 3; i++) {
+            if (playerChoice == validChoices[i]){
+                valid = true;
+            }
+        }
+        if (!valid){
+            console.log("Sorry please enter only rock, paper, or scissors.")
+        }
+    }
+    return playerChoice;
 }
 
 // No parameters needed
@@ -30,6 +44,8 @@ function decisionMaker() {
 
 
 //Start of Game
+let playerScore = 0;
+let computerScore = 0;
 console.log("Welcome to the game of Rock Paper Scissors!\n\n");
 
 //Prompts user for input
@@ -57,12 +73,18 @@ if (playerChoice != compChoice){
     }
 
     if (winFlag){
-        console.log("Congratulations you win this game!");
+        console.log("Congratulations you win this round!");
+        playerScore++;
     }
     else {
-        console.log("Sorry the compouter wins this game.");
+        console.log("Sorry the compouter wins this round.");
+        computerScore++;
     }
 }
 else {
     console.log("Wow looks like we have a tie!");
+    playerScore++;
+    computerScore++;
 }
+
+console.log(playerScore + " " + computerScore);
