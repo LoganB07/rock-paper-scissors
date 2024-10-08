@@ -90,7 +90,7 @@ function playGame(){
 }
 
 function announceWinner(playerScore, compScore) {
-    console.log("You scored: ${playerScore}  Computer scored: ${compScore}");
+    console.log(`You scored: ${playerScore}  Computer scored: ${compScore}`);
     if (playerScore > compScore) {
         console.log("Wow you won the game! Good job!");
     }
