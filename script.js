@@ -32,7 +32,7 @@ function createGameBoard() {
     buttonScissors.classList.add("scissors");
     buttonScissors.textContent = "SCISSORS";
     buttonContainer3.appendChild(buttonScissors);
-    
+
     let scoreboard = document.createElement("div");
     scoreboard.classList.add("scoreboard");
     gameArea.appendChild(scoreboard);
@@ -52,7 +52,7 @@ function createGameBoard() {
 
     let playerScoreText = document.createElement("p");
     playerScoreText.classList.add("player-score");
-    playerScoreText.textContent = "PLAYER SCORE: ";
+    playerScoreText.textContent = "PLAYER SCORE: " + playerScore;
     scoreBox1.appendChild(playerScoreText);
 
     let scoreBox2 = document.createElement("div");
@@ -61,30 +61,45 @@ function createGameBoard() {
 
     let compScoreText = document.createElement("p");
     compScoreText.classList.add("comp-score");
-    compScoreText.textContent = "COMPUTER SCORE: ";
+    compScoreText.textContent = "COMPUTER SCORE: " + computerScore;
     scoreBox2.appendChild(compScoreText);
 
+    const rockBtn = document.querySelector(".rock");
+    rockBtn.addEventListener('click', () => {chooseRock(playerScoreText, compScoreText);});
 
+    const paperBtn = document.querySelector(".paper");
+    paperBtn.addEventListener('click', () => {choosePaper(playerScoreText, compScoreText);});
+
+    const scissorsBtn = document.querySelector(".scissors");
+    scissorsBtn.addEventListener('click', () => {chooseScissors(playerScoreText, compScoreText);});
+    
 }
 
+function chooseRock(elem1, elem2) {
+    let playerChoice = "rock";
+    let compChoice = decisionMaker();
+    playRound(playerChoice, compChoice);
+    alert(`You chose: ${playerChoice}\nComputer chose: ${compChoice}`);
+    elem1.textContent = "PLAYER SCORE: " + playerScore;
+    elem2.textContent = "COMPUTER SCORE: " + computerScore;
+}
 
-function input() {
-    let playerChoice;
-    let valid = false;
-    const validChoices = ["rock", "paper", "scissors"];
-    while (!valid){
-        playerChoice = prompt("Rock, Paper, or Scissors: ");
-        playerChoice = playerChoice.toLowerCase();
-        for (let i = 0; i < 3; i++) {
-            if (playerChoice == validChoices[i]){
-                valid = true;
-            }
-        }
-        if (!valid){
-            console.log("Sorry please enter only rock, paper, or scissors.")
-        }
-    }
-    return playerChoice;
+function choosePaper(elem1, elem2) {
+    let playerChoice = "paper";
+    let compChoice = decisionMaker();
+    playRound(playerChoice, compChoice);
+    alert(`You chose: ${playerChoice}\nComputer chose: ${compChoice}`);
+    elem1.textContent = "PLAYER SCORE: " + playerScore;
+    elem2.textContent = "COMPUTER SCORE: " + computerScore;
+}
+
+function chooseScissors(elem1, elem2) {
+    let playerChoice = "scissors";
+    let compChoice = decisionMaker();
+    playRound(playerChoice, compChoice);
+    alert(`You chose: ${playerChoice}\nComputer chose: ${compChoice}`);
+    elem1.textContent = "PLAYER SCORE: " + playerScore;
+    elem2.textContent = "COMPUTER SCORE: " + computerScore;
 }
 
 function decisionMaker() {
@@ -108,12 +123,10 @@ function decisionMaker() {
     return choice;
 }
 
-function playRound(){
-let playerChoice = input();
+function playRound(playerChoice, compChoice){
 console.log(playerChoice);
 
 console.log("Computer is making a choice...");
-let compChoice = decisionMaker();
 
 console.log("Determining the winner...\n");
 console.log("You picked: " + playerChoice + "  Computer picked: " + compChoice);
@@ -144,12 +157,9 @@ else {
     playerScore++;
     computerScore++;
 }
-}
 
-function playGame(){
-    for (let i = 0; i < 5; ++i){
-        playRound();
-    }
+console.log(playerScore);
+console.log(computerScore);
 }
 
 function announceWinner(playerScore, compScore) {
@@ -167,12 +177,15 @@ function announceWinner(playerScore, compScore) {
 
 
 //Start of Game
+console.log("Welcome to the game of Rock Paper Scissors!\n\n");
 let playerScore = 0;
 let computerScore = 0;
-console.log("Welcome to the game of Rock Paper Scissors!\n\n");
 
 
+const mainBtn = document.querySelector("#game-start");
+mainBtn.addEventListener('click', () => {
+    createGameBoard();
+    });
 
-const btn = document.querySelector("#game-start");
-btn.addEventListener('click', () => {createGameBoard()});
+
 
