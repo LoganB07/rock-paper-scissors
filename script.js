@@ -50,9 +50,19 @@ function createGameBoard() {
     scoreBox1.classList.add("player-score");
     scores.appendChild(scoreBox1);
 
+    let playerScoreText = document.createElement("p");
+    playerScoreText.classList.add("player-score");
+    playerScoreText.textContent = "PLAYER SCORE: ";
+    scoreBox1.appendChild(playerScoreText);
+
     let scoreBox2 = document.createElement("div");
     scoreBox2.classList.add("comp-score");
     scores.appendChild(scoreBox2);
+
+    let compScoreText = document.createElement("p");
+    compScoreText.classList.add("comp-score");
+    compScoreText.textContent = "COMPUTER SCORE: ";
+    scoreBox2.appendChild(compScoreText);
 
 
 }
