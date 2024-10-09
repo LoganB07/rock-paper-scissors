@@ -1,5 +1,63 @@
-// No parameters needed
-// Returns input from the user in lowercase with validation
+function createGameBoard() {
+    const gameArea = document.querySelector(".game-area");
+    gameArea.setAttribute("style", "background-color: green;")
+    
+    let buttons = document.createElement("div");
+    buttons.classList.add("buttons");
+    gameArea.appendChild(buttons);
+
+    let buttonContainer1 = document.createElement("div");
+    buttonContainer1.classList.add("button-container");
+    buttons.appendChild(buttonContainer1);
+
+    let buttonRock = document.createElement("button");
+    buttonRock.classList.add("rock");
+    buttonRock.textContent = "ROCK";
+    buttonContainer1.appendChild(buttonRock);
+
+    let buttonContainer2 = document.createElement("div");
+    buttonContainer2.classList.add("button-container");
+    buttons.appendChild(buttonContainer2);
+
+    let buttonPaper = document.createElement("button");
+    buttonPaper.classList.add("paper");
+    buttonPaper.textContent = "PAPER";
+    buttonContainer2.appendChild(buttonPaper);
+
+    let buttonContainer3 = document.createElement("div");
+    buttonContainer3.classList.add("button-container");
+    buttons.appendChild(buttonContainer3);
+
+    let buttonScissors = document.createElement("button");
+    buttonScissors.classList.add("scissors");
+    buttonScissors.textContent = "SCISSORS";
+    buttonContainer3.appendChild(buttonScissors);
+    
+    let scoreboard = document.createElement("div");
+    scoreboard.classList.add("scoreboard");
+    gameArea.appendChild(scoreboard);
+
+    let scoreTitle = document.createElement("h3");
+    scoreTitle.classList.add("score-title");
+    scoreTitle.textContent = "SCORE";
+    scoreboard.appendChild(scoreTitle);
+
+    let scores = document.createElement("div");
+    scores.classList.add("scores");
+    scoreboard.appendChild(scores);
+
+    let scoreBox1 = document.createElement("div");
+    scoreBox1.classList.add("player-score");
+    scores.appendChild(scoreBox1);
+
+    let scoreBox2 = document.createElement("div");
+    scoreBox2.classList.add("comp-score");
+    scores.appendChild(scoreBox2);
+
+
+}
+
+
 function input() {
     let playerChoice;
     let valid = false;
@@ -19,8 +77,6 @@ function input() {
     return playerChoice;
 }
 
-// No parameters needed
-// Returns random choice of rock, paper, or  scissors
 function decisionMaker() {
     const MAX = 3;
     const MIN = 1;
@@ -43,15 +99,12 @@ function decisionMaker() {
 }
 
 function playRound(){
-    //Prompts user for input
 let playerChoice = input();
 console.log(playerChoice);
 
-//Computers turn to choose
 console.log("Computer is making a choice...");
 let compChoice = decisionMaker();
 
-//Determining the winner
 console.log("Determining the winner...\n");
 console.log("You picked: " + playerChoice + "  Computer picked: " + compChoice);
 
@@ -108,6 +161,8 @@ let playerScore = 0;
 let computerScore = 0;
 console.log("Welcome to the game of Rock Paper Scissors!\n\n");
 
-playGame();
-announceWinner(playerScore, computerScore);
+
+
+const btn = document.querySelector("#game-start");
+btn.addEventListener('click', () => {createGameBoard()});
 
