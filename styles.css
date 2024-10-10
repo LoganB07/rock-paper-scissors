@@ -1,5 +1,5 @@
 * {
-    border: solid red 2px;
+    border: solid rgb(62, 62, 62) 2px;
 }
 
 body {
@@ -8,6 +8,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: black;
 }
 
 body .game-area {
@@ -41,12 +42,9 @@ body .game-area {
     flex-direction: column;
     align-items: center;
     flex: 1;
-    background-color: blue;
+    background-color: rgb(38, 121, 237);
 }
 
-.score-title {
-
-}
 
 .scores {
     display: flex;

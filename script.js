@@ -78,8 +78,8 @@ function createGameBoard() {
 function chooseRock(elem1, elem2) {
     let playerChoice = "rock";
     let compChoice = decisionMaker();
-    playRound(playerChoice, compChoice);
     alert(`You chose: ${playerChoice}\nComputer chose: ${compChoice}`);
+    playRound(playerChoice, compChoice);
     elem1.textContent = "PLAYER SCORE: " + playerScore;
     elem2.textContent = "COMPUTER SCORE: " + computerScore;
 }
@@ -87,8 +87,8 @@ function chooseRock(elem1, elem2) {
 function choosePaper(elem1, elem2) {
     let playerChoice = "paper";
     let compChoice = decisionMaker();
-    playRound(playerChoice, compChoice);
     alert(`You chose: ${playerChoice}\nComputer chose: ${compChoice}`);
+    playRound(playerChoice, compChoice);
     elem1.textContent = "PLAYER SCORE: " + playerScore;
     elem2.textContent = "COMPUTER SCORE: " + computerScore;
 }
@@ -96,8 +96,8 @@ function choosePaper(elem1, elem2) {
 function chooseScissors(elem1, elem2) {
     let playerChoice = "scissors";
     let compChoice = decisionMaker();
-    playRound(playerChoice, compChoice);
     alert(`You chose: ${playerChoice}\nComputer chose: ${compChoice}`);
+    playRound(playerChoice, compChoice);
     elem1.textContent = "PLAYER SCORE: " + playerScore;
     elem2.textContent = "COMPUTER SCORE: " + computerScore;
 }
@@ -154,12 +154,16 @@ if (playerChoice != compChoice){
 }
 else {
     console.log("Wow looks like we have a tie!");
-    playerScore++;
-    computerScore++;
 }
 
 console.log(playerScore);
 console.log(computerScore);
+
+if (playerScore >= 5 || computerScore >= 5) {
+    if (playerScore >= 5) {alert("Congrats you won the game!");}
+    else{alert("Sorry you lose this game.");}
+    location.reload();
+}
 }
 
 function announceWinner(playerScore, compScore) {
